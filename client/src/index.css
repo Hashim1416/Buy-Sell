@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-luxury-black text-luxury-silver font-sans overflow-x-hidden selection:bg-luxury-gold selection:text-black transition-colors duration-500;
+  }
+  
+  body.light {
+    @apply bg-[#FAFAFA] text-luxury-black;
+  }
+}
+
+/* Advanced Luxury Effects */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-border {
+  position: relative;
+}
+.shimmer-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.1) 0%,
+    rgba(212, 175, 55, 0.5) 50%,
+    rgba(212, 175, 55, 0.1) 100%
+  );
+  background-size: 200% auto;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: shimmer 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.shimmer-border:hover::before {
+  opacity: 1;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.7), rgba(15, 15, 15, 0.85));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.15);
+  transform: translateY(-4px);
+}
+
+.light .glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(243, 243, 243, 0.9));
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.light .glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.1);
+}
+
+/* Luxury Text Gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF 30%, #D4AF37 70%, #AA7C11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .text-gold-gradient {
+  background: linear-gradient(135deg, #1A1A1A 30%, #D4AF37 70%, #AA7C11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+.light ::-webkit-scrollbar-track {
+  background: #FAFAFA;
+}
+::-webkit-scrollbar-thumb {
+  background: #2C2C2C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Car Reels Vertical feed */
+.reels-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: calc(100vh - 64px);
+}
+.reel-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: calc(100vh - 64px);
+}
+
+/* Light Mode Global Theme Overrides */
+body.light {
+  background-color: #FAFAFA !important;
+  color: #1A1A1A !important;
+}
+
+body.light h1,
+body.light h2,
+body.light h3,
+body.light h4,
+body.light .text-white {
+  color: #1A1A1A !important;
+}
+
+body.light p,
+body.light span,
+body.light li,
+body.light label,
+body.light .text-zinc-100,
+body.light .text-zinc-205,
+body.light .text-zinc-300,
+body.light .text-zinc-400 {
+  color: #4A4A4A !important;
+}
+
+body.light .text-zinc-500,
+body.light .text-zinc-550,
+body.light .text-zinc-650 {
+  color: #71717A !important;
+}
+
+/* Make backgrounds and borders adapt */
+body.light .bg-\[\#0c0c0c\]\/80,
+body.light .bg-zinc-950,
+body.light .bg-zinc-950\/60,
+body.light .bg-zinc-950\/95,
+body.light .bg-zinc-950\/98,
+body.light .bg-\[\#050505\],
+body.light .bg-\[\#0A0A0A\]\/90,
+body.light .bg-\[\#0A0A0A\]\/95,
+body.light .bg-\[\#121212\],
+body.light .glass-card,
+body.light .bg-black\/40,
+body.light .bg-black\/20 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light .border-zinc-800,
+body.light .border-zinc-850,
+body.light .border-zinc-900,
+body.light .border-white\/5,
+body.light .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Make inputs adaptive */
+body.light input,
+body.light select,
+body.light textarea {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  color: #1A1A1A !important;
+}
+
+body.light input::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* Navbar overrides */
+body.light nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light nav a {
+  color: #4A4A4A !important;
+}
+
+body.light nav a:hover,
+body.light nav a.text-white {
+  color: #000000 !important;
+}
+
+body.light nav .border-zinc-800 {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Home Selection Bar */
+body.light .sticky {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Footer overrides */
+body.light footer {
+  background-color: #F3F4F6 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #4A4A4A !important;
+}
+
+body.light footer h4,
+body.light footer span,
+body.light footer a {
+  color: #1A1A1A !important;
+}
+
+body.light footer p {
+  color: #555555 !important;
+}
+
+body.light footer .bg-\[\#020202\] {
+  background-color: #E5E7EB !important;
+}
+
+/* Progress bar tracks */
+body.light .bg-zinc-900 {
+  background-color: #E5E7EB !important;
+}
+
+body.light .text-gold-gradient {
+  background: linear-gradient(135deg, #1A1A1A 30%, #D4AF37 70%, #AA7C11 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* VIP Scheduler */
+body.light .bg-zinc-950\/10 {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Poppins Fluid Typography System */
+.typography-hero-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(28px, 3.5vw, 48px) !important;
+  line-height: 1.1 !important;
+}
+
+.typography-section-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(28px, 3vw, 42px) !important;
+  line-height: 1.15 !important;
+}
+
+.typography-card-title {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: clamp(16px, 1.2vw, 20px) !important;
+  letter-spacing: -0.5px !important;
+}
+
+.typography-body-text {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: clamp(12px, 0.9vw, 14px) !important;
+}
+
+.typography-button-text {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.typography-price-text {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(18px, 1.5vw, 24px) !important;
+  letter-spacing: -1px !important;
+}
+
+.typography-dashboard-stat {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 900 !important;
+  font-size: clamp(24px, 2vw, 48px) !important;
+}
+
+/* Apply Outfit globally to override any native elements */
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea, label, li {
+  font-family: 'Outfit', sans-serif !important;
+}
+

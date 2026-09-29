@@ -1,0 +1,21 @@
+{
+  "name": "aetherion-motors-luxury",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm install --workspace=client && npm install --workspace=server",
+    "dev": "node scripts/dev.js",
+    "build:client": "npm run build --workspace=client",
+    "start:server": "npm run start --workspace=server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
+}
